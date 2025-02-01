@@ -19,6 +19,8 @@ public class BallBehavior : MonoBehaviour
     public float launchDuration;
     public float timeLastLaunch;
     public int secondsToMaxSpeed;
+    Rigidbody2D body;
+    public bool rerouting;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -60,13 +62,28 @@ public class BallBehavior : MonoBehaviour
             }
             currentSpeed = currentSpeed * Time.deltaTime;
             Vector2 newPosition = Vector2.MoveTowards(currentPosition, targetPosition, currentSpeed);
-            transform.position = newPosition;
+            body.MovePosition(newPosition);
         } else {
             if(launching == true) {
                 startCooldown();
             }
             targetPosition = getRandomPosition();
         }
+        }
+        
+        void FixedUpdate(){
+            body = GetComponent<Rigidbody2D>();
+            Vector2 currentPosition = body.position;
+            if (onCooldown() == false) {
+                if (launching == true) {
+                    float currentLaunchTime = Time.time - timeLaunchStart;
+                    if (currentLaunchTime > launchDuration) {
+                        startCooldown();
+                    }
+                } else { 
+                    launch();
+                }
+            }
         }
 
 Vector2 getRandomPosition(){
@@ -82,7 +99,9 @@ Vector2 getRandomPosition(){
          }
     
     public void launch() {
-        targetPosition = target.transform.position;
+        //targetPosition = target.transform.position;
+        Rigidbody2D targetBody = target.GetComponent<Rigidbody2D>();
+        targetPosition = targetBody.position;
         if (launching == false) {
             timeLaunchStart = Time.time;
             launching = true;
@@ -101,6 +120,39 @@ Vector2 getRandomPosition(){
     public void startCooldown() {
         timeLastLaunch = Time.time;
         launching = false;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        Debug.Log("Collided with: " + collision.gameObject.tag);
+        if (collision.gameObject.tag == "Wall") {
+            targetPosition = getRandomPosition();
+        }
+        if(collision.gameObject.tag == "Ball") {
+            Reroute(collision);
+        }
+    }
+
+    public void initialPosition() {
+        body = GetComponent<Rigidbody2D>();
+        body.position = getRandomPosition();
+        targetPosition = getRandomPosition();
+        launching = false;
+        rerouting = true;
+    }
+
+    public void Reroute(Collision2D collision) {
+        GameObject otherBall = collision.gameObject;
+        if (rerouting == true) {
+            otherBall.GetComponent<BallBehavior>().rerouting = false;
+            Rigidbody2D ballBody = otherBall.GetComponent<Rigidbody2D>();
+            Vector2 contact = collision.GetContact(0).normal;
+            targetPosition = Vector2.Reflect(targetPosition, contact).normalized;
+            launching = false;
+            float seperationDistance = 0.1f;
+            ballBody.position += contact * seperationDistance;
+        } else { 
+            rerouting = true;
+            }
     }
     
 }

@@ -19,4 +19,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
      newPosition = Vector2.MoveTowards(transform.position, mousePosG, speed * Time.fixedDeltaTime);
      transform.position = newPosition;   
     }
+    private void OnCollisionEnter2D(Collision2D collision) {
+        string collided = collision.gameObject.tag;
+        Debug.Log("Collided with: " + collided);
+        if (collided == "Ball" || collided == "Wall") {
+            Debug.Log("Game Over");
+        }
+    }
 }
