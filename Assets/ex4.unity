@@ -734,6 +734,12 @@ MonoBehaviour:
   speed: 1
   newPosition: {x: 0, y: 0}
   mousePosG: {x: 0, y: 0, z: 0}
+  start: 1.89
+  dashSpeed: 5
+  baseSpeed: 2.99
+  dashDuration: 3.62
+  dashing: 1
+  endLastDash: 0
 --- !u!1001 &447147042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -855,6 +861,7 @@ GameObject:
   - component: {fileID: 489666164}
   - component: {fileID: 489666163}
   - component: {fileID: 489666162}
+  - component: {fileID: 489666165}
   m_Layer: 5
   m_Name: Dash
   m_TagString: Untagged
@@ -964,6 +971,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489666160}
   m_CullTransparentMesh: 1
+--- !u!114 &489666165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489666160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ffbbc6d2fea34352913fbd57bc9b613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &574382405
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1114,8 +1133,8 @@ Transform:
   m_GameObject: {fileID: 577235488}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.9028, y: -0.1061, z: 0}
-  m_LocalScale: {x: 2.2696438, y: 1.5599544, z: 1}
+  m_LocalPosition: {x: 2.9028, y: -0.0103, z: 0}
+  m_LocalScale: {x: 2.2696438, y: 1.5900615, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 34784781}
@@ -1927,6 +1946,12 @@ MonoBehaviour:
   speed: 2
   newPosition: {x: 0, y: 0}
   mousePosG: {x: 0, y: 0, z: 0}
+  start: 0
+  dashSpeed: 0
+  baseSpeed: 0
+  dashDuration: 0
+  dashing: 0
+  endLastDash: 0
 --- !u!114 &1339825252
 MonoBehaviour:
   m_ObjectHideFlags: 0
