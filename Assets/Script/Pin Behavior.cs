@@ -36,7 +36,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         string collided = collision.gameObject.tag;
         Debug.Log("Collided with: " + collided);
         if (collided == "Ball" || collided == "Wall") {
-            Debug.Log("Game Over");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Game Over");
         }
     }
 

@@ -154,6 +154,12 @@ Vector2 getRandomPosition(){
             rerouting = true;
             }
     }
+    public void setBounds (float miX, float maX, float miY, float maY) {
+        minX = miX;
+        maxX = maX;
+        minY = miY;
+        maxY = maY;
+    }
     
 }
 
