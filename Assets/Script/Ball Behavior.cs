@@ -28,7 +28,8 @@ public class BallBehavior : MonoBehaviour
     //secondsToMaxSpeed = 30.0f;
     //minSpeed = 0.75f;
     //maxSpeed = 2.0f;
-     targetPosition = getRandomPosition();  
+     targetPosition = getRandomPosition();
+     initialPosition (); 
     }
     
 
@@ -133,11 +134,14 @@ Vector2 getRandomPosition(){
     }
 
     public void initialPosition() {
-        body = GetComponent<Rigidbody2D>();
-        body.position = getRandomPosition();
+        //body = GetComponent<Rigidbody2D>();
+        //body.position = getRandomPosition();
+        //targetPosition = getRandomPosition();
+        //launching = false;
+        //rerouting = true;
+        transform.position = getRandomPosition();
         targetPosition = getRandomPosition();
         launching = false;
-        rerouting = true;
     }
 
     public void Reroute(Collision2D collision) {
@@ -159,6 +163,9 @@ Vector2 getRandomPosition(){
         maxX = maX;
         minY = miY;
         maxY = maY;
+    }
+    public void setTarget(GameObject pin){
+        target = pin;
     }
     
 }
