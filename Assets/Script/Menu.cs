@@ -8,5 +8,8 @@ public class Menu : MonoBehaviour
     public void goToMenu() {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
     }
+    public void goToPins() {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Character Selection");
+    }
     
 }

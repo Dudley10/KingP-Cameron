@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ef91f50a6f24157852f18f19fbfc7f, type: 3}
+  m_Name: PinsDB
+  m_EditorClassIdentifier: 
+  pins:
+  - name: Default Pin
+    prefab: {fileID: 8437536931370913232, guid: bd652516be234426398997f8ad112e73, type: 3}
+  - name: Illuminati Pin
+    prefab: {fileID: 3225748759710635629, guid: f4b446efe5a6a422a974d4840b4550d0, type: 3}
+  - name: Cardinal Pin
+    prefab: {fileID: 5526983168844363656, guid: b954936b1d5d841e7a2d0c177e7409b0, type: 3}
+  - name: Chef Pin
+    prefab: {fileID: 1718540859787866302, guid: 1f8aec55758444931bf5ae6a3e663dfb, type: 3}
+  - name: Soda Pin
+    prefab: {fileID: 5976922958236004589, guid: 1dfca3d3492d14c58b96266c7cbc1a6a, type: 3}
+  - name: Retro Pin
+    prefab: {fileID: 8685020293975426861, guid: 976bec854f8704418b77bce965c475eb, type: 3}
+  - name: Dog Pin
+    prefab: {fileID: 2460567784156787615, guid: 87bc1a0db932a49e18dc25dc03e9af5a, type: 3}
+  - name: Frog Pin
+    prefab: {fileID: 8175603849598150692, guid: 699bfeb0519b340e68d8a0b2fc4c13d2, type: 3}

@@ -131,6 +131,7 @@ Vector2 getRandomPosition(){
         if(collision.gameObject.tag == "Ball") {
             Reroute(collision);
         }
+         Debug.Log(this + "Collided with:" + collision.gameObject.name);
     }
 
     public void initialPosition() {
@@ -167,7 +168,6 @@ Vector2 getRandomPosition(){
     public void setTarget(GameObject pin){
         target = pin;
     }
-    
 }
 
 
