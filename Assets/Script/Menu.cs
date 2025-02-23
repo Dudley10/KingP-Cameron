@@ -1,15 +1,22 @@
 using UnityEngine;
+using System.Collections;
 
 public class Menu : MonoBehaviour
 {
     public void goToGame() {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("ex4");
+       StartCoroutine(WaitForSoundAndTransition("ex4"));
+    }
+    private IEnumerator WaitForSoundAndTransition(string sceneName){
+        AudioSource audioSource = GetComponentInChildren<AudioSource>();
+        audioSource.Play();
+        yield return new WaitForSeconds(audioSource.clip.length);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
     public void goToMenu() {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Main Menu");
+       StartCoroutine(WaitForSoundAndTransition("Main Menu"));
     }
     public void goToPins() {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Character Selection");
+        StartCoroutine(WaitForSoundAndTransition("Character Selection"));
     }
     
 }

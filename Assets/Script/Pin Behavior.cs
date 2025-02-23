@@ -37,6 +37,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         Debug.Log("Collided with: " + collided);
         if (collided == "Ball" || collided == "Wall") {
             UnityEngine.SceneManagement.SceneManager.LoadScene("Game Over");
+            StartCoroutine(WaitForSoundAndTransition)
         }
     }
 
