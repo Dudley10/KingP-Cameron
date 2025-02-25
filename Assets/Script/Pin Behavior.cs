@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class NewMonoBehaviourScript : MonoBehaviour
 {
     public float speed = 2.0f;
@@ -16,12 +16,14 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public static float cooldownRate = 1.0f;
     public float endLastDash;
     public static float cooldown = 0.0f;
+    public AudioSource[] audioSources;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         cam = Camera.main;
         body = GetComponent<Rigidbody2D>();
         dashing = false;
+        audioSources = GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
@@ -36,8 +38,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
         string collided = collision.gameObject.tag;
         Debug.Log("Collided with: " + collided);
         if (collided == "Ball" || collided == "Wall") {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Game Over");
-            StartCoroutine(WaitForSoundAndTransition)
+            Debug.Log("Game Over");
+            StartCoroutine(WaitForSoundAndTransition());
         }
     }
 
@@ -60,7 +62,16 @@ public class NewMonoBehaviourScript : MonoBehaviour
             dashing = true;
             speed = dashSpeed;
             start = Time.time;
+            if (audioSources[1].isPlaying) {
+                audioSources[1].Stop();
+            }
+            audioSources[1].Play();
         }}
+    }
+    private IEnumerator WaitForSoundAndTransition() {
+        audioSources[0].Play();
+        yield return new WaitForSeconds (audioSources[0].clip.length);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
     }
 
 }
