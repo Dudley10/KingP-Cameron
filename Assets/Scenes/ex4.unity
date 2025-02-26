@@ -963,11 +963,11 @@ MonoBehaviour:
   - {fileID: 7992653155126643389, guid: b19f94777618e4d1399da34a4ce3af05, type: 3}
   targetObject: {fileID: 0}
   startTime: 60
-  spawnRatio: 1
-  minX: -8.1
-  maxX: 7.04
-  minY: -4.08
-  maxY: 3.96
+  spawnRatio: 10.1
+  minX: -3.21
+  maxX: 9.18
+  minY: -3.82
+  maxY: 3.19
   pinsDB: {fileID: 11400000, guid: ac5a2a0210a9e470287c463d46f0bca1, type: 2}
 --- !u!1 &797962817
 GameObject:
@@ -1397,6 +1397,7 @@ MonoBehaviour:
   dashDuration: 0
   dashing: 0
   endLastDash: 0
+  audioSources: []
 --- !u!114 &1339825252
 MonoBehaviour:
   m_ObjectHideFlags: 0

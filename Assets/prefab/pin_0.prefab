@@ -108,11 +108,12 @@ MonoBehaviour:
   newPosition: {x: 0, y: 0}
   mousePosG: {x: 0, y: 0, z: 0}
   start: 0
-  dashSpeed: 8
+  dashSpeed: 26.96
   baseSpeed: 2
-  dashDuration: 0.3
-  dashing: 0
-  endLastDash: 0
+  dashDuration: 0.5
+  dashing: 1
+  endLastDash: 0.24
+  audioSources: []
 --- !u!50 &7919193187921198351
 Rigidbody2D:
   serializedVersion: 5
