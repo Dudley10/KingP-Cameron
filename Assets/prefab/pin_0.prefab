@@ -114,6 +114,7 @@ MonoBehaviour:
   dashing: 1
   endLastDash: 0.24
   audioSources: []
+  dashParticles: {fileID: 5588879213071507544, guid: 7e22ce38b725441e0a476d3a545e67eb, type: 3}
 --- !u!50 &7919193187921198351
 Rigidbody2D:
   serializedVersion: 5

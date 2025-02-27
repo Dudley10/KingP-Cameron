@@ -17,6 +17,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public float endLastDash;
     public static float cooldown = 0.0f;
     public AudioSource[] audioSources;
+    public GameObject dashParticles;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -38,7 +39,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         string collided = collision.gameObject.tag;
         Debug.Log("Collided with: " + collided);
         if (collided == "Ball" || collided == "Wall") {
-            //Debug.Log("Game Over");
+            Debug.Log("Game Over");
             StartCoroutine(WaitForSoundAndTransition());
         }
     }
@@ -47,6 +48,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         if (dashing == true) {
             float currenttime = Time.time;
             float timeDashing = currenttime - start;
+            Instantiate(dashParticles, transform.position, Quaternion.identity);
             if (timeDashing > dashDuration) {
                 dashing = false;
                 speed = baseSpeed;
@@ -71,7 +73,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     private IEnumerator WaitForSoundAndTransition() {
         audioSources[0].Play();
         yield return new WaitForSeconds (audioSources[0].clip.length);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Game Over");
     }
 
 }
